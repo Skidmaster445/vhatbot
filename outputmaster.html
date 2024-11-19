@@ -1,1 +1,76 @@
-404: Not Found
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walter Bot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        #chatbox {
+            width: 300px;
+            height: 400px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            overflow-y: scroll;
+            padding: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+        }
+        #userInput {
+            width: 300px;
+            padding: 10px;
+            box-sizing: border-box;
+            margin-top: 10px;
+        }
+        .message {
+            margin: 10px 0;
+        }
+        .user {
+            text-align: right;
+            color: red;
+        }
+        .bot {
+            text-align: left;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="chatbox"></div>
+    <input type="text" id="userInput" placeholder="Type your message here..." onkeypress="sendMessage(event)">
+    
+    <script>
+        function sendMessage(event) {
+            if (event.key === 'Enter') {
+                const userMessage = document.getElementById('userInput').value;
+                if (userMessage.trim() !== '') {
+                    const userMessageDiv = document.createElement('div');
+                    userMessageDiv.classList.add('message', 'user');
+                    userMessageDiv.textContent = userMessage;
+                    document.getElementById('chatbox').appendChild(userMessageDiv);
+
+                    document.getElementById('userInput').value = '';
+                    document.getElementById('chatbox').scrollTop = document.getElementById('chatbox').scrollHeight;
+
+                    setTimeout(() => {
+                        const botMessageDiv = document.createElement('div');
+                        botMessageDiv.classList.add('message', 'bot');
+                        botMessageDiv.textContent = 'wsg bbg if you want to talk let me see that ass';
+                        document.getElementById('chatbox').appendChild(botMessageDiv);
+                        document.getElementById('chatbox').scrollTop = document.getElementById('chatbox').scrollHeight;
+                    }, 1000);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
